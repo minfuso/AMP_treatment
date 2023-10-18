@@ -1,0 +1,86 @@
+#!/bin/sh
+# Sample script for parallel
+#--------------------------------------------------
+
+#PBS -N AMP_calculation
+#PBS -S /bin/bash
+#PBS -j oe
+#PBS -m e
+#PBS -M NAME  
+#PBS -l nodes=1:ppn=16
+##PBS -l pmem=4gb
+#PBS -q pmedium
+
+# Purge all previous modules
+module purge
+
+# Loading fortran compiler
+#module load gcc/9.4.0
+
+# environment variable setup
+#module load anaconda2 # for python2
+module load anaconda3 # for python3
+
+
+export Project=amp_input
+source settmpdir                       # local work directory on the execution host
+export CurrDir=$PBS_O_WORKDIR          # directory with input and output files
+
+LANG=C                          # some programs just don't like
+LC_ALL=C                        # internationalized environments!
+export LANG LC_ALL
+
+#printenv                       # uncomment to see all environment variables
+
+# uncomment to get all commands echo'ed
+# set -x 
+                         
+cat $PBS_NODEFILE > $CurrDir/hostsfiles
+export HOSTS_FILE=$CurrDir/hostsfiles
+export OMP_NUM_THREADS=1
+export MKL_NUM_THREADS=1
+export NCPUS=`cat \$PBS_NODEFILE | wc -l`
+cat $PBS_NODEFILE               # this file contains the nodes that were
+                                # allocated for your job if you use MPI or PVM
+
+# Here the real job starts
+#
+echo "#--- Job started at `date`"
+echo "#--- Running with $NCPUS processors" 
+echo "#--- on nodes: "
+cat $PBS_NODEFILE
+
+# create the temporary directory and make sure the input directory is
+# accessible
+mkdir -p $TMPDIR || exit 1
+cd $CurrDir || exit 2
+
+# copy all necessary files (input, source, programs etc.) to the execution
+# host
+cp *.traj $TMPDIR
+cp *.py $TMPDIR
+
+# run the job locally on the execution host
+cd $TMPDIR
+
+### PARALLELIZATION FOR AMP ####
+
+# Build the cores dictionnary for AMP when using PBS launching files
+export CORES=$(uniq -c $PBS_NODEFILE | awk '{print "\x27"$2"\x27:", $1","}' | sed -e '$ s/.$//' -e "\$a}" -e '1 i\cores = {' | sed ':a;N;$!ba;s/\n/ /g')
+
+# Replace the PARALLEL variable in the python file by the value stored in $CORES
+sed -e "s/PARALLEL/$CORES/g" "$Project".py > "$Project"_launched.py
+
+### END PARA AMP ###
+
+# Run calculation
+echo "Start Python program"
+python "$Project"_launched.py
+
+# copy all output files from the execution host back to $CurrDir
+mv * $CurrDir
+
+# remove the temporary directory if $CurrDir is accessible
+cd $CurrDir && rm -rf $TMPDIR     # uncomment this for automatic cleanup
+
+echo "#--- Job ended at `date`"
