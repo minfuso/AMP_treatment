@@ -11,6 +11,8 @@ the one found for aeneth data treatment.
 
 # IMPORTATIONS
 
+import os
+import shutil
 from ase.io import iread
 from ase import Atoms
 from amp import Amp
@@ -230,6 +232,35 @@ class Calc():
         """
         self.extract_data()
         self.write_all_data()
+        
+    def clean(self, logfile=True):
+        """
+
+        Clean the unwanted ampdb databases
+
+        Args:
+            logfile (bool, optional): _description_. Defaults to True.
+        """
+        DIR_LIST = (
+            'amp-fingerprint-primes.ampdb',
+            'amp-fingerprints.ampdb',
+            'amp-neighborlists.ampdb'
+        )
+        # Clean the directories
+        for dir in DIR_LIST:
+            try:
+                shutil.rmtree(dir)
+            except OSError as e:
+                print("Error: %s - %s." % (e.filename, e.strerror))
+        
+        # Delete the logfile if asked
+        if logfile:
+            # Try to delete the file.
+            try:
+                os.remove('amp-log.txt')
+            except OSError as e:
+                # If it fails, inform the user.
+                print("Error: %s - %s." % (e.filename, e.strerror))
 
 
 if __name__ == "__main__":
@@ -257,4 +288,6 @@ if __name__ == "__main__":
         src_forces_outfilename = SRC_FORCES_OUTFILENAME 
     )
     
-    data.predict()        
+    data.predict()     
+    
+    data.clean()   
