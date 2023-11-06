@@ -1,14 +1,11 @@
-stages:
-    - build
+image: python:latest
 pages:
     stage: build
-    image:
-    name: amp_pcmt/mkdocs-material
-    entrypoint:
-        - ""
     script:
-        - mkdocs build
-        - mv site public
+        - /usr/local/bin/python -m pip install --upgrade pip
+        - /usr/local/bin/python -m pip install mkdocs-material
+        - /usr/local/bin/python -m pip install mkdocs-macros-plugin
+        - mkdocs build --site-dir public
     artifacts:
         paths:
             - public
