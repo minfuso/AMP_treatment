@@ -8,6 +8,8 @@ nav:
     - 'The amp_extract method': data_extraction.md
     - 'Modules': 
       - 'amp_extract': amp_extract.md
+  - 'Data splitting':
+    - 'The amp_split method': data_preparation.md
 
 theme:
   name: material
