@@ -4,10 +4,12 @@ import random
 from functools import wraps
 import time
 import logging
+import os
 
 # Create and configure logger
+print('Log: ', os.getcwd()+'/'+os.path.basename(__file__).split(sep=".")[0] + ".log")
 logging.basicConfig(
-    filename=__file__.split(sep=".")[0] + ".log", format="%(message)s", filemode="w"
+    filename=os.getcwd()+'/'+os.path.basename(__file__).split(sep=".")[0] + ".log", format="%(message)s", filemode="w"
 )
 logger = logging.getLogger()
 
@@ -57,6 +59,8 @@ class Train_test_split:
         nb_test = self.total_length - nb_training
         print("The number of frames in the training set is: {}".format(nb_training))
         print("The number of frames in the test set is: {}".format(nb_test))
+        logger.debug("The number of frames in the training set is: {}".format(nb_training))
+        logger.debug("The number of frames in the test set is: {}".format(nb_test))
 
         # Randomly selecting configurations for the test set (smaller)
         id_test_list = random.sample(range(0, self.total_length), nb_test)
@@ -71,6 +75,8 @@ class Train_test_split:
             frame = self.trajectory[id]
             self.test_traj.write(frame)
         print("The test trajectory is saved as {}".format(test_traj_name))
+        logger.debug("The test trajectory is saved as {}".format(test_traj_name))
+
 
         # Creating train_list_trajectory file
         self.train_traj = Trajectory(filename=train_traj_name, mode="w")
@@ -81,6 +87,7 @@ class Train_test_split:
             frame = self.trajectory[id]
             self.train_traj.write(frame)
         print("The train trajectory is saved as {}".format(train_traj_name))
+        logger.debug("The train trajectory is saved as {}".format(train_traj_name))
 
 
 if __name__ == "__main__":
