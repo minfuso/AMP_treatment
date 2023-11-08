@@ -10,14 +10,14 @@ that in the `amp` package framework.
 The `amp` (in opposition with `aenet`) package do not split the reference data set into
 a training and a testing set. Therefore, to perform well data validation after the training
 of the neural network, we first need to split the reference data set into these two sets.
-One solution given here is to use the `amp_split` module given in this code.
+One solution given here is to use the `split` module given in this code.
 
-## amp\_split
+## `split` module
 
-`amp_split` is a set of python scripts that allows to split a reference data set (`traj` file format)
+`split` is a python module that allows to split a reference data set (`traj` file format)
 into two different set: the training and the testing set (`traj` file format). 
 
-In this version, `amp_split` is composed only by one Class: `Train_test_split`. This Class takes several
+In this version, `split` is composed only by one Class: `Train_test_split`. This Class takes several
 arguments:
 
 - `trajectory` (str): Name of the data set file (`.traj` file)
@@ -34,11 +34,8 @@ As output, we obain three different file:
 First, we need to generate the `Train_test_split object`
 
 ```python
-# Warning: Need additional code to read the module. 
-# See examples/amp_split/example_split.ipynb
-#
 # Importing the module
-from amp_split import Train_test_split
+from amppcmt.split import Train_test_split
 
 trajectory = Train_test_split(
     trajectory = [trajectory_name],
@@ -61,6 +58,6 @@ At this point, the output files are written in the current working directory.
 
 ## Example
 
-An example can be found in the examples: `scripts/examples/amp_split/example_split.ipynb`.
+An example can be found in the examples: `scripts/examples/split/example_split.ipynb`.
 
 

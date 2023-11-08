@@ -4,13 +4,12 @@ nav:
   - 'Home': index.md
   - 'Launching on SAKURA':
     - 'PBS_script': pbs_script.md 
-  - 'Module installation': module_installation.md
   - 'Data extraction': 
     - 'Extract module': data_extraction.md
     - 'Modules': 
       - 'amp_extract': amp_extract.md
   - 'Data splitting':
-    - 'The amp_split method': data_preparation.md
+    - 'The split module': data_preparation.md
 
 theme:
   name: material
