@@ -1,0 +1,12 @@
+Metadata-Version: 2.1
+Name: amp-pcmt
+Version: 0.0.1
+Summary: AMP tools for the PCMT Team
+Author: Maxime Infuso
+Author-email: <maxime.infuso@univ-lille.fr
+Keywords: python,amp,neural network,atomistics,PES
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+
+AMP tools for the PCMT Team, allowing to extract and split trajectories
