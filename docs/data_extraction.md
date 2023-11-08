@@ -24,13 +24,13 @@ When handling neural network training, one significant step is testing. Usually,
 
 To perform such step, one need to extract the potential energy for all the features present in both the training and the testing set. Usually, we use *ab initio* values as reference, called *src* in our module. Once those data aquired, we need to compute the potential energy using our neural network and compare them. 
 
-To facilitate those steps, we propose a general method called `amp_extract`, that will be discussed in the next section.
+To facilitate those steps, we propose a general module called `extract` from the `amppcmt` package, that will be discussed in the next section.
 
-### amp_extract
+### The extract module
 
-`amp_extract` is a set of `python` scripts that allows to extract, predict and write the results on brut data files. To have the details about all the functions inside this module, please check the **module documentation** section. 
+The extract is a set of `python` scripts that allows to extract, predict and write the results on brut data files. To have the details about all the functions inside this module, please check the **module documentation** section. 
 
-In this version, `amp_extract` is composed by only one class: `Calc`. This class allows you to extract, predict, and write all the values needed for the neural network testing step. The class takes several arguments, some mandatories and other optional. Here are the arguments:
+In this version, The extract module is composed by only one class: `Calc`. This class allows you to extract, predict, and write all the values needed for the neural network testing step. The class takes several arguments, some mandatories and other optional. Here are the arguments:
 
 **Input arguments**
 
@@ -52,10 +52,10 @@ In this version, `amp_extract` is composed by only one class: `Calc`. This class
 
 By default, it can produces three different files:
 
-- amp_energies.dat
-- amp_forces.dat
-- src_energies.dat
-- src_forces.dat
+- `amp_energies.dat`
+- `amp_forces.dat`
+- `src_energies.dat`
+- `src_forces.dat`
 
 where amp or src corresponds respectively to the neural network (testing set) and
 source data (reference testing set) It uses the same output
@@ -73,7 +73,7 @@ from amp import Amp
 import numpy as np
 
 # Importing the module
-from amp_extract import Calc
+from amppcmt.extract import Calc
 
 # Defining the Calc object
 data = Calc(
