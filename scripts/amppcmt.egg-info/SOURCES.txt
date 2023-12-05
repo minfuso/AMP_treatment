@@ -9,5 +9,7 @@ amppcmt.egg-info/requires.txt
 amppcmt.egg-info/top_level.txt
 amppcmt/extract/__init__.py
 amppcmt/extract/amp_extract.py
+amppcmt/launch/__init__.py
+amppcmt/launch/amp_launch.py
 amppcmt/split/__init__.py
 amppcmt/split/amp_split.py

@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.1' 
+VERSION = '0.0.2' 
 DESCRIPTION = 'AMP tools for the PCMT Team'
 LONG_DESCRIPTION = 'AMP tools for the PCMT Team, allowing to extract and split trajectories'
 
