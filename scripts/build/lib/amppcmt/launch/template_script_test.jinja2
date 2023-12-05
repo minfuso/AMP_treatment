@@ -28,13 +28,12 @@ print('---')
 if initial_calc:
     print('Initial AMP calculation')
     calc = Amp(descriptor=Gaussian(),
-            model=NeuralNetwork(hiddenlayers=hiddenlayers, checkpoints = checkpoints),
-            PARALLEL
+            model=NeuralNetwork(hiddenlayers=hiddenlayers, checkpoints = checkpoints)
             )
 else :
     print("Retraining the neural network")
     print('amp file: {}'.format(amp_param))
-    calc = Amp.load(amp_param, PARALLEL)
+    calc = Amp.load(amp_param)
     print('Trajectory file: {}'.format(traj_name))
 print('---')
 

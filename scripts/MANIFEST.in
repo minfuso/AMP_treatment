@@ -1,0 +1,2 @@
+include amppcmt/launch/template_script.jinja2
+include amppcmt/launch/template_script_test.jinja2

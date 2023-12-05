@@ -1,3 +1,4 @@
+MANIFEST.in
 pyproject.toml
 setup.py
 amppcmt/__init__.py
@@ -11,5 +12,7 @@ amppcmt/extract/__init__.py
 amppcmt/extract/amp_extract.py
 amppcmt/launch/__init__.py
 amppcmt/launch/amp_launch.py
+amppcmt/launch/template_script.jinja2
+amppcmt/launch/template_script_test.jinja2
 amppcmt/split/__init__.py
 amppcmt/split/amp_split.py

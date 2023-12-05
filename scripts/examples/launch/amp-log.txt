@@ -1,0 +1,83 @@
+
+   oo      o       o   oooooo
+  o  o     oo     oo   o     o
+ o    o    o o   o o   o     o
+o      o   o  o o  o   o     o
+oooooooo   o   o   o   oooooo
+o      o   o       o   o
+o      o   o       o   o
+o      o   o       o   o
+
+Amp: Atomistic Machine-learning Package
+Developed by Andrew Peterson, Alireza Khorshidi, and others,
+Brown University.
+PI Website: http://brown.edu/go/catalyst
+Official repository: http://bitbucket.org/andrewpeterson/amp
+Official documentation: http://amp.readthedocs.io/
+Citation:
+  Alireza Khorshidi & Andrew A. Peterson,
+  Computer Physics Communications 207: 310-324 (2016).
+  http://doi.org/10.1016/j.cpc.2016.05.010
+======================================================================
+User: infuso
+Hostname: ul5103
+Date: 2023-12-05T12:12:14 (2023-12-05T11:12:14 UTC)
+Architecture: x86_64
+PID: 44614
+Amp version: 1.0.1
+Amp directory: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/amp
+ Last commit: 37e6f1c64883a9b1797e305b9cb7656f962fb09c
+ Last commit date: 2023-12-05 10:35:12 +0100
+Python: v3.7.13: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/bin/python
+ASE v3.22.1: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/ase
+NumPy v1.21.6: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/numpy
+SciPy v1.7.3: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/scipy
+ZMQ/PyZMQ v4.3.4/v25.1.1: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/zmq
+pxssh: Not available from pxssh.
+pxssh (via pexpect v4.8.0): /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/pexpect/pxssh.py
+======================================================================
+number of cores manually specified; single machine assumed.
+Parallel configuration determined from environment for <single machine>:
+  localhost: 8
+
+   oo      o       o   oooooo
+  o  o     oo     oo   o     o
+ o    o    o o   o o   o     o
+o      o   o  o o  o   o     o
+oooooooo   o   o   o   oooooo
+o      o   o       o   o
+o      o   o       o   o
+o      o   o       o   o
+
+Amp: Atomistic Machine-learning Package
+Developed by Andrew Peterson, Alireza Khorshidi, and others,
+Brown University.
+PI Website: http://brown.edu/go/catalyst
+Official repository: http://bitbucket.org/andrewpeterson/amp
+Official documentation: http://amp.readthedocs.io/
+Citation:
+  Alireza Khorshidi & Andrew A. Peterson,
+  Computer Physics Communications 207: 310-324 (2016).
+  http://doi.org/10.1016/j.cpc.2016.05.010
+======================================================================
+User: infuso
+Hostname: ul5103
+Date: 2023-12-05T12:12:24 (2023-12-05T11:12:24 UTC)
+Architecture: x86_64
+PID: 44614
+Amp version: 1.0.1
+Amp directory: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/amp
+ Last commit: 37e6f1c64883a9b1797e305b9cb7656f962fb09c
+ Last commit date: 2023-12-05 10:35:12 +0100
+Python: v3.7.13: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/bin/python
+ASE v3.22.1: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/ase
+NumPy v1.21.6: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/numpy
+SciPy v1.7.3: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/scipy
+ZMQ/PyZMQ v4.3.4/v25.1.1: /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/zmq
+pxssh: Not available from pxssh.
+pxssh (via pexpect v4.8.0): /Users/infuso/Documents/Machin-learning/AMP_PCMT/.env/lib/python3.7/site-packages/pexpect/pxssh.py
+======================================================================
+number of cores manually specified; single machine assumed.
+Parallel configuration determined from environment for <single machine>:
+  localhost: 8
+Loaded file: amp-untrained-parameters.amp

@@ -9,17 +9,17 @@ from amp.model.neuralnetwork import NeuralNetwork
 # initializing some variables
 #=============================================================================
 # Trajectory file (training)
-traj_name = '{{ traj_name }}'  # Need for initial calc
+traj_name = 'CO_disso_traj'  # Need for initial calc
 # Need for retaining the neural network (amp parameters)
-amp_param = '{{ amp_param }}'
+amp_param = 'amp-untrained-parameters.amp'
 # Set to true if initial calculation. Set to false for retraining
-initial_calc = {{ initial_calc }}
-hiddenlayers = {{ hiddenlayers }}  # Number of hiddenlayers
-checkpoints = {{ checkpoints }}  # Checkpoints writing frequency
+initial_calc = False
+hiddenlayers = (10, 10)  # Number of hiddenlayers
+checkpoints = -100  # Checkpoints writing frequency
 # Parameter for the model convergence
-convergence_parameters = {{ convergence_parameters }}
+convergence_parameters = {'energy_rmse': 0.001, 'force_rmse': None, 'energy_maxresid': None, 'force_maxresid': None}
 # If test, do not train the network
-test = {{ test }}
+test = True
 #=============================================================================
 # training NN
 #=============================================================================
@@ -28,13 +28,12 @@ print('---')
 if initial_calc:
     print('Initial AMP calculation')
     calc = Amp(descriptor=Gaussian(),
-            model=NeuralNetwork(hiddenlayers=hiddenlayers, checkpoints = checkpoints),
-            PARALLEL
+            model=NeuralNetwork(hiddenlayers=hiddenlayers, checkpoints = checkpoints)
             )
 else :
     print("Retraining the neural network")
     print('amp file: {}'.format(amp_param))
-    calc = Amp.load(amp_param, PARALLEL)
+    calc = Amp.load(amp_param)
     print('Trajectory file: {}'.format(traj_name))
 print('---')
 

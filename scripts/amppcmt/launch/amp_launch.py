@@ -2,6 +2,7 @@ from amp import Amp
 from amp.descriptor.gaussian import Gaussian
 from amp.model.neuralnetwork import NeuralNetwork
 from jinja2 import Template
+import pkg_resources
 
 class Launch():
     
@@ -46,7 +47,11 @@ class Launch():
                 self.convergence_parameters[key] = value
         
     def generate_input(self):
-        template = Template(open('scripts/amppcmt/launch/template_script.jinja2').read())
+        if self.test:
+            template_path = pkg_resources.resource_filename(__name__, 'template_script_test.jinja2')
+        else:
+            template_path = pkg_resources.resource_filename(__name__, 'template_script.jinja2')
+        template = Template(open(template_path).read())
         rendered_script = template.render(
                 traj_name = self.traj_name,
                 amp_param = self.amp_param,
