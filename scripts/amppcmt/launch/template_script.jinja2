@@ -1,0 +1,80 @@
+from amp import Amp
+from amp.descriptor.gaussian import Gaussian
+from amp.model.neuralnetwork import NeuralNetwork
+#=============================================================================
+#   AMP_run.py
+#   Description:
+#=============================================================================
+#=============================================================================
+# initializing some variables
+#=============================================================================
+# Trajectory file (training)
+traj_name = '{{ traj_name }}'  # Need for initial calc
+# Need for retaining the neural network (amp parameters)
+amp_param = '{{ amp_param }}'
+# Set to true if initial calculation. Set to false for retraining
+initial_calc = {{ initial_calc }}
+hiddenlayers = {{ hiddenlayers }}  # Number of hiddenlayers
+checkpoints = {{ checkpoints }}  # Checkpoints writing frequency
+# Parameter for the model convergence
+convergence_parameters = {{ convergence_parameters }}
+# If test, do not train the network
+test = {{ test }}
+#=============================================================================
+# training NN
+#=============================================================================
+
+print('---')
+if initial_calc:
+    print('Initial AMP calculation')
+    calc = Amp(descriptor=Gaussian(),
+            model=NeuralNetwork(hiddenlayers=hiddenlayers, checkpoints = checkpoints),
+            #    PARALLEL
+            )
+else :
+    print("Retraining the neural network")
+    print('amp file: {}'.format(amp_param))
+    calc = Amp.load('Cluster_test/Test_relaunch/amp-untrained-parameters.amp')
+    print('Trajectory file: {}'.format(traj_name))
+print('---')
+
+calc.model.checkpoints = checkpoints
+
+calc.model.lossfunction.parameters['convergence'].update(
+        {
+                'energy_rmse':0.001,
+                'force_rmse': None,
+                'energy_maxresid': None,
+                'force_maxresid': None,
+                'force_coefficient' : None
+        }
+    )
+
+calc.model.lossfunction.parameters.update(
+        {
+            'force_coefficient' : None
+        }
+    )
+
+print('Available parameters \n ---')
+# Model
+print('hiddenlayers :')
+if not initial_calc:
+    for key, value in calc.model.parameters['hiddenlayers'].items():
+        print('   {} : {}'.format(key, value))
+print('{} : {}'.format('checkpoints',calc.model.checkpoints))
+print('{} : {}'.format('activation',calc.model.parameters['activation']))
+# Lossfunction parameters
+for key, value in calc.model.lossfunction.parameters.items():
+    if key == 'convergence':
+        print(key, ':')
+        for key_conv, value_conv in value.items():
+            print('   {} : {}'.format(key_conv, value_conv))
+        continue
+    print('{} : {}'.format(key, value))
+# Print if force will be computed
+print('Force trainning : {}'.format(calc.model.lossfunction.parameters['force_coefficient'] is not None))
+print('---\n')
+
+if not test:
+    calc.train(images=traj_name)
