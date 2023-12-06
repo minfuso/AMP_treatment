@@ -4,6 +4,7 @@ nav:
   - 'Home': index.md
   - 'Launching on SAKURA':
     - 'PBS_script': pbs_script.md 
+    - 'amp_launch' : amp_launch.md
   - 'Data extraction': 
     - 'Extract module': data_extraction.md
     - 'Modules': 
