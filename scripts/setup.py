@@ -15,7 +15,7 @@ setup(
         long_description=LONG_DESCRIPTION,
         packages=find_packages(),
         include_package_data=True,
-        install_requires=['numpy', 'ase', 'amp-atomistics'], # add any additional packages that 
+        install_requires=['numpy', 'ase', 'amp-atomistics', 'jinja2'], # add any additional packages that 
         # needs to be installed along with your package. Eg: 'caer'
         
         keywords=['python', 'amp', 'neural network', 'atomistics', 'PES'],
